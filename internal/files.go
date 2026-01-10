@@ -7,15 +7,29 @@ import (
 )
 
 func CreateFiles(projectname string) {
-	files := []string{
-		filepath.Join(projectname, "cmd", projectname, "main.go"),
-		filepath.Join(projectname, ".gitignore"),
+	const (
+		maingo = `package main
+		
+		import (
+		"fmt"
+		)
+
+		func main(){
+			fmt.Println("Hello World")
+		}`
+		gitignore = `.env
+		.DS_Store`
+	)
+
+	files := map[string]string{
+		filepath.Join(projectname, "cmd", projectname, "main.go"): maingo,
+		filepath.Join(projectname, ".gitignore"):                  gitignore,
 	}
 
-	for _, file := range files {
-		if _, err := os.Create(file); err != nil {
-			log.Fatal("Error Creating", file, ":", err)
+	for path, content := range files {
+		if err := os.WriteFile(path, []byte(content), 0644); err != nil {
+			log.Fatal(err)
 		}
-		log.Println("Succesfully Created : ", file)
+		log.Println("Succesfully Created : ", path)
 	}
 }
