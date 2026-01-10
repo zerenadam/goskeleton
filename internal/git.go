@@ -16,7 +16,7 @@ func RunGitCommands(dir, gitlink string) {
 		{"push", "-u", "origin", "main"},
 	}
 
-	for i, commandArg := range commands {
+	for _, commandArg := range commands {
 		cmd := exec.Command("git", commandArg...)
 		cmd.Dir = dir
 
