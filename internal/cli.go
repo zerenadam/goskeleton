@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func ParseCli() (projectname, link string) {
+func ParseCli() (projectname, link string, gitflag bool) {
 	args := os.Args[1:]
 	gitlink := ""
 
@@ -24,8 +24,9 @@ func ParseCli() (projectname, link string) {
 	fmt.Println("Project Name:", args[0])
 	if gitlink != "" {
 		fmt.Println("Git Link:", gitlink)
+		return args[0], gitlink, true
 	}
 
-	return args[0], gitlink
+	return args[0], gitlink, false
 
 }
