@@ -10,15 +10,15 @@ func CreateFiles(projectname string) {
 	const (
 		maingo = `package main
 		
-		import (
-		"fmt"
-		)
+import (
+	"fmt"
+)
 
-		func main(){
-			fmt.Println("Hello World")
-		}`
+func main(){
+	fmt.Println("Hello World")
+	}`
 		gitignore = `.env
-		.DS_Store`
+.DS_Store`
 	)
 
 	files := map[string]string{
