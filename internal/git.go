@@ -3,6 +3,7 @@ package internal
 import (
 	"log"
 	"os/exec"
+	"strings"
 )
 
 func RunGitCommands(dir, gitlink string) {
@@ -20,9 +21,9 @@ func RunGitCommands(dir, gitlink string) {
 		cmd.Dir = dir
 
 		if output, err := cmd.CombinedOutput(); err != nil {
-			log.Fatal("Error Running", commands[i], ":", err, string(output))
+			log.Fatal("Error Running", strings.Join(commandArg, " "), ":", err, string(output))
 		} else {
-			log.Println("Succesfully Ran : ", commands[i])
+			log.Println("Succesfully Ran : ", strings.Join(commandArg, " "))
 		}
 	}
 }
