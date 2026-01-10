@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -15,8 +15,8 @@ func CreateFolders(projectname string) {
 
 	for _, dir := range dirs {
 		if err := os.MkdirAll(dir, 0755); err != nil {
-			fmt.Println("Error creating", dir, ":", err)
+			log.Fatal("Error creating", dir, ":", err)
 		}
-		fmt.Println("Succesfully created : ", dir)
+		log.Println("Succesfully created : ", dir)
 	}
 }

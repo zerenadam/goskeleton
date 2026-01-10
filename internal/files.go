@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 )
@@ -14,8 +14,8 @@ func CreateFiles(projectname string) {
 
 	for _, file := range files {
 		if _, err := os.Create(file); err != nil {
-			fmt.Println("Error Creating", file, ":", err)
+			log.Fatal("Error Creating", file, ":", err)
 		}
-		fmt.Println("Succesfully Created : ", file)
+		log.Println("Succesfully Created : ", file)
 	}
 }
