@@ -27,13 +27,6 @@ You can install goskeleton globally with Go:
 go install github.com/zerenadam/goskeleton/cmd/goskeleton@latest
 ```
 
-Make sure \$HOME/go/bin (or \$GOPATH/bin) is in your PATH:
-
-```bash
-echo 'export PATH=$HOME/go/bin:$PATH' >> ~/.zshrc
-source ~/.zshrc
-```
-
 Now you can run `goskeleton` from anywhere.
 
 ---
