@@ -1,117 +1,204 @@
-# goskeleton
+# 🦴 goskeleton
 
-a lightweight CLI tool written in Go for scaffolding Go projects
-It can create a new project folder with a starter `main.go` and `.gitignore`
-and optionally initialize a Git repository with a remote
-It also generates standard Go folders like `internal` and `pkg`
+a lightweight go project scaffolding tool that generates a clean project structure and optionally initializes git with your first commit
 
----
+## ✨ features
 
-## Features
+- 🚀 instant project setup with clean folder structure
+- 📁 automatic directory creation
+- 📝 generates starter files
+- 🎸 optional git initialization and first commit
+- 🔗 automatic remote repository linking
+- ⚡ simple and fast no configuration needed
 
-- Create a new Go project folder structure
-- Generate `cmd/<projectname>/main.go` with a starter template
-- Generate a `.gitignore` file with `.env` and `.DS_Store`
-- Create standard Go folders: `internal` and `pkg`
-- Optional Git initialization and remote setup
-- Simple CLI usage: `goskeleton <projectname>` or `goskeleton <projectname> -git <gitlink>`
-- Emoji-based logs for easy tracking
+## 📥 installation
 
----
-
-## Installation
-
-You can install goskeleton globally with Go:
+### via go install
 
 ```bash
-go install github.com/zerenadam/goskeleton/cmd/goskeleton@latest
+go install github.com/zerenadam/goskeleton@latest
 ```
 
-Now you can run `goskeleton` from anywhere.
-
----
-
-## Usage
-
-### Create a project without Git
+### via go run
 
 ```bash
-goskeleton MyProject
+go run github.com/zerenadam/goskeleton <projectname>
 ```
 
-This will:
+## 🎯 usage
 
-- Create a folder `MyProject`
-- Generate `cmd/MyProject/main.go` with a starter Go template
-- Create standard Go folders: `internal` and `pkg`
-- Generate a `.gitignore` file with `.env` and `.DS_Store` entries
+### basic usage
 
-### Create a project with Git
+create a new project without git initialization
 
 ```bash
-goskeleton MyProject -git https://github.com/username/MyProject.git
+goskeleton myproject
 ```
 
-This will additionally:
+### with git initialization
 
-- Initialize a Git repository inside the project folder
-- Add all files
-- Commit with an emoji 🎸
-- Set the branch to `main`
-- Add the remote repository
-- Push the initial commit
-
----
-
-## Example
+create a project and automatically initialize git add files commit and push to remote
 
 ```bash
-$ goskeleton TestApp -git https://github.com/zerenadam/TestApp.git
-Creating project: TestApp
-Successfully created cmd/TestApp/main.go
-Successfully created internal/
-Successfully created pkg/
-Successfully created .gitignore
-Successfully ran: init
-Successfully ran: add .
-Successfully ran: commit -m 🎸
-Successfully ran: branch -m main
-Successfully ran: remote add origin https://github.com/zerenadam/TestApp.git
-Successfully ran: push -u origin main
+goskeleton myproject -git https://github.com/username/myproject.git
 ```
 
----
+this will automatically
 
-## Folder structure created
+- initialize a git repository
+- add all files
+- create initial commit with 🎸 emoji
+- rename branch to main
+- add remote origin
+- push to remote repository
+
+## 📁 generated folder structure
 
 ```
-TestApp/
+myproject/
 ├── cmd/
-│   └── TestApp/
+│   └── myproject/
+│       └── main.go          # application entry point with hello world
+├── internal/                # private application code
+├── pkg/                     # public libraries
+└── .gitignore              # ignores .env and .DS_Store
+```
+
+### folder breakdown
+
+**cmd/projectname/** contains your main application entry point
+
+**internal/** for private application code that shouldnt be imported by other projects
+
+**pkg/** for code that can be shared and imported by external projects
+
+**.gitignore** preconfigured to ignore environment files and macos system files
+
+## 🚀 quick start example
+
+### create a basic project
+
+```bash
+goskeleton awesomeapp
+cd awesomeapp
+go run cmd/awesomeapp/main.go
+```
+
+output
+```
+Hello World
+```
+
+### create project with git
+
+first create an empty repository on github then
+
+```bash
+goskeleton awesomeapp -git https://github.com/yourusername/awesomeapp.git
+```
+
+goskeleton will create the structure initialize git and push everything to your remote repository automatically
+
+## 📝 generated main.go
+
+the starter main.go file includes a simple hello world program
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main(){
+    fmt.Println("Hello World")
+}
+```
+
+## 🎸 git workflow
+
+when using the `-git` flag goskeleton executes these commands automatically
+
+```bash
+git init                                    # initialize repository
+git add .                                   # stage all files
+git commit -m "🎸"                         # create initial commit
+git branch -m main                          # rename to main branch
+git remote add origin <your-repo-url>       # add remote
+git push -u origin main                     # push to remote
+```
+
+## 📋 prerequisites
+
+- go 118 or higher
+- git installed if using the `-git` flag
+
+## 💡 usage tips
+
+### after project creation
+
+navigate to your project and start building
+
+```bash
+cd myproject
+go mod init github.com/username/myproject
+go run cmd/myproject/main.go
+```
+
+### organizing your code
+
+use the folder structure as a foundation
+
+- put your main application in `cmd/projectname/`
+- add internal packages in `internal/`
+- create shared libraries in `pkg/`
+
+### example structure as your project grows
+
+```
+myproject/
+├── cmd/
+│   └── myproject/
 │       └── main.go
 ├── internal/
+│   ├── handlers/
+│   ├── models/
+│   └── services/
 ├── pkg/
+│   └── utils/
 └── .gitignore
 ```
 
----
+## 🔧 command line options
 
-## Notes
+```bash
+goskeleton <projectname>                    # create project only
+goskeleton <projectname> -git <repo-url>    # create project and initialize git
+```
 
-- The `-git` flag is optional
-- The project name is **required**
-- The CLI safely handles missing Git links
-- Designed for Go developers who want a fast project skeleton
+### examples
 
----
+```bash
+goskeleton myapi
+goskeleton webserver -git https://github.com/user/webserver.git
+goskeleton tool -git git@github.com:user/tool.git
+```
 
-## Contributing
+## ⚠️ notes
 
-Contributions are welcome! Feel free to open issues or submit pull requests.  
-Make sure to follow Go formatting standards (`gofmt`) and keep commits descriptive.
+- the project name will be used as the folder name and subfolder under cmd
+- make sure your git repository exists and is empty before using the `-git` flag
+- the initial commit message is 🎸 guitar emoji
+- `.gitignore` is preconfigured to ignore `.env` and `.DS_Store` files
 
----
+## 🤝 contributing
 
-## License
+contributions are welcome feel free to open issues or submit pull requests on github
 
-MIT License
+## 📄 license
+
+check the repository for license information
+
+## 🙏 acknowledgments
+
+built to simplify go project initialization
