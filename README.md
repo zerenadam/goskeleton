@@ -7,7 +7,7 @@ a lightweight go project scaffolding tool that generates a clean project structu
 - 🚀 instant project setup with clean folder structure
 - 📁 automatic directory creation
 - 📝 generates starter files
-- 🎸 optional git initialization and first commit
+- 🦴 optional git initialization and first commit
 - 🔗 automatic remote repository linking
 - ⚡ simple and fast no configuration needed
 
@@ -47,7 +47,7 @@ this will automatically
 
 - initialize a git repository
 - add all files
-- create initial commit with 🎸 emoji
+- create initial commit with 🦴 emoji
 - rename branch to main
 - add remote origin
 - push to remote repository
@@ -115,14 +115,14 @@ func main(){
 }
 ```
 
-## 🎸 git workflow
+## 🦴 git workflow
 
 when using the `-git` flag goskeleton executes these commands automatically
 
 ```bash
 git init                                    # initialize repository
 git add .                                   # stage all files
-git commit -m "🎸"                         # create initial commit
+git commit -m "🦴"                          # create initial commit
 git branch -m main                          # rename to main branch
 git remote add origin <your-repo-url>       # add remote
 git push -u origin main                     # push to remote
@@ -188,7 +188,7 @@ goskeleton tool -git git@github.com:user/tool.git
 
 - the project name will be used as the folder name and subfolder under cmd
 - make sure your git repository exists and is empty before using the `-git` flag
-- the initial commit message is 🎸 guitar emoji
+- the initial commit message is 🦴 guitar emoji
 - `.gitignore` is preconfigured to ignore `.env` and `.DS_Store` files
 
 ## 🤝 contributing
@@ -197,7 +197,7 @@ contributions are welcome feel free to open issues or submit pull requests on gi
 
 ## 📄 license
 
-check the repository for license information
+MIT License
 
 ## 🙏 acknowledgments
 
