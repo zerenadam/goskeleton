@@ -15,8 +15,8 @@ func CreateFolders(projectname string) {
 
 	for _, dir := range dirs {
 		if err := os.MkdirAll(dir, 0755); err != nil {
-			log.Fatal("Error creating", dir, ":", err)
+			log.Fatal("Error Creating", dir, ":", err)
 		}
-		log.Println("Succesfully created : ", dir)
+		log.Println("Succesfully Created : ", dir)
 	}
 }
