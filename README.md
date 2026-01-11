@@ -2,32 +2,41 @@
 
 Goskeleton is a lightweight CLI tool written in Go for scaffolding Go projects.  
 It can create a new project folder with a starter `main.go` and `.gitignore`,  
-and optionally initialize a Git repository with a remote.
+and optionally initialize a Git repository with a remote.  
+It also generates standard Go folders like `internal` and `pkg`.
+
+---
 
 ## Features
 
 - Create a new Go project folder structure
-- Generate `main.go` with a starter template
-- Generate a `.gitignore` file with standard entries
+- Generate `cmd/<projectname>/main.go` with a starter template
+- Generate a `.gitignore` file with `.env` and `.DS_Store`
 - Create standard Go folders: `internal` and `pkg`
 - Optional Git initialization and remote setup
 - Simple CLI usage: `goskeleton <projectname>` or `goskeleton <projectname> -git <gitlink>`
+- Emoji-based logs for easy tracking
+
+---
 
 ## Installation
 
-Install Goskeleton globally with Go:
+You can install Goskeleton globally with Go:
 
 ```bash
-go install github.com/zerenadam/goskeleton/cmd/goskeleton@latest```
+go install github.com/zerenadam/goskeleton/cmd/goskeleton@latest
+```
 
-## Add Goskeleton to your PATH
-
-Make sure `$HOME/go/bin` (or `$GOPATH/bin`) is in your PATH:
+Make sure \$HOME/go/bin (or \$GOPATH/bin) is in your PATH:
 
 ```bash
 echo 'export PATH=$HOME/go/bin:$PATH' >> ~/.zshrc
 source ~/.zshrc
 ```
+
+Now you can run `goskeleton` from anywhere.
+
+---
 
 ## Usage
 
@@ -36,35 +45,34 @@ source ~/.zshrc
 ```bash
 goskeleton MyProject
 ```
+
 This will:
 
-Create a folder MyProject
+- Create a folder `MyProject`
+- Generate `cmd/MyProject/main.go` with a starter Go template
+- Create standard Go folders: `internal` and `pkg`
+- Generate a `.gitignore` file with `.env` and `.DS_Store` entries
 
-Generate cmd/MyProject/main.go with a starter Go template
+### Create a project with Git
 
-Create standard Go folders: internal and pkg
-
-Generate a .gitignore file with .env and .DS_Store entries
-
-Create a project with Git
+```bash
 goskeleton MyProject -git https://github.com/username/MyProject.git
-
+```
 
 This will additionally:
 
-Initialize a Git repository inside the project folder
+- Initialize a Git repository inside the project folder
+- Add all files
+- Commit with an emoji 🎸
+- Set the branch to `main`
+- Add the remote repository
+- Push the initial commit
 
-Add all files
+---
 
-Commit with an emoji 🎸
+## Example
 
-Set the branch to main
-
-Add the remote repository
-
-Push the initial commit
-
-Example
+```bash
 $ goskeleton TestApp -git https://github.com/zerenadam/TestApp.git
 Creating project: TestApp
 Successfully created cmd/TestApp/main.go
@@ -77,8 +85,13 @@ Successfully ran: commit -m 🎸
 Successfully ran: branch -m main
 Successfully ran: remote add origin https://github.com/zerenadam/TestApp.git
 Successfully ran: push -u origin main
+```
 
-Folder structure created
+---
+
+## Folder structure created
+
+```
 TestApp/
 ├── cmd/
 │   └── TestApp/
@@ -86,21 +99,27 @@ TestApp/
 ├── internal/
 ├── pkg/
 └── .gitignore
+```
 
-Notes
+---
 
-The -git flag is optional
+## Notes
 
-The project name is required
+- The `-git` flag is optional
+- The project name is **required**
+- The CLI safely handles missing Git links
+- Logs include emojis for easy tracking
+- Designed for Go developers who want a fast project skeleton
 
-The CLI safely handles missing Git links
+---
 
-Logs include emojis for easy tracking
+## Contributing
 
-Contributing
+Contributions are welcome! Feel free to open issues or submit pull requests.  
+Make sure to follow Go formatting standards (`gofmt`) and keep commits descriptive.
 
-Contributions are welcome! Feel free to open issues or pull requests.
+---
 
-License
+## License
 
 MIT License
