@@ -108,7 +108,6 @@ TestApp/
 - The `-git` flag is optional
 - The project name is **required**
 - The CLI safely handles missing Git links
-- Logs include emojis for easy tracking
 - Designed for Go developers who want a fast project skeleton
 
 ---
