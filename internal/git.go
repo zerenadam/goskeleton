@@ -10,7 +10,7 @@ func RunGitCommands(dir, gitlink string) {
 	commands := [][]string{
 		{"init"},
 		{"add", "."},
-		{"commit", "-m", "🎸"},
+		{"commit", "-m", "🦴"},
 		{"branch", "-m", "main"},
 		{"remote", "add", "origin", gitlink},
 		{"push", "-u", "origin", "main"},
