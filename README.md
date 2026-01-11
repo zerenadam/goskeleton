@@ -1,9 +1,9 @@
-# Goskeleton
+# goskeleton
 
-Goskeleton is a lightweight CLI tool written in Go for scaffolding Go projects.  
-It can create a new project folder with a starter `main.go` and `.gitignore`,  
-and optionally initialize a Git repository with a remote.  
-It also generates standard Go folders like `internal` and `pkg`.
+a lightweight CLI tool written in Go for scaffolding Go projects
+It can create a new project folder with a starter `main.go` and `.gitignore`
+and optionally initialize a Git repository with a remote
+It also generates standard Go folders like `internal` and `pkg`
 
 ---
 
@@ -21,7 +21,7 @@ It also generates standard Go folders like `internal` and `pkg`.
 
 ## Installation
 
-You can install Goskeleton globally with Go:
+You can install goskeleton globally with Go:
 
 ```bash
 go install github.com/zerenadam/goskeleton/cmd/goskeleton@latest
